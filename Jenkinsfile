@@ -7,7 +7,7 @@ pipeline {
         stage ("hellow World"){
             steps {
                 echo "hellow world"
-                echo params.Fruit
+                echo $params.Fruit
             }
         }
     }

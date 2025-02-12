@@ -19,13 +19,11 @@ pipeline {
 
             }
         }
-    }
-    stage ("third stage"){
+        stage ("third stage"){
             steps {
 
                 echo "$env.Name"
             }
         }
     }
-
 }

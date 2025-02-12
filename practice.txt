@@ -37,7 +37,7 @@
 		
 		
 11. create pipeline
-	env, param, variable, agent, stages post and pre
+	env, param, variable, agent, stages post and pre, condition
 12. webhook
 13. move jenkins job from one pc to other
 14. differnet port

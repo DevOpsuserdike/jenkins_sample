@@ -1,0 +1,48 @@
+1.  create a freestyle job
+	Build Trigger
+	a. remote trigger: http://54.185.184.240:8080/job/freestylejob/build?token=token
+	b. Build after other projects are built : stable, unstable, fail
+	c. Build periodically : H/15 * * * *  (every 15 min run)
+	d. Poll SCM
+	e. webhook
+
+    Build environement
+    a. Delete workspace before build starts
+	b. Use secret text(s) or file(s)
+	c. Add timestamp
+	d. Terminate a build if it's stuck
+	
+	Build step
+	a. shell script
+
+2.  Environement variable and tool variables : manage jenkins--> system --> environemtal variable and tool location details
+3.  Paramaeters : build with parameters ${Name}
+4.  Build variables: BUILD_ID, BUILD_NAME ( https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables )
+5.  Install plugins: Manage jenkins --> plugin
+6.  Check installed plugins: Manage jenkins --> plugin -- > installed (enabled)
+7.  Manage jenkins -- > tools --> (maven , git, jdk, gradle, ant) : install automatically or provide the path
+8.  Manage jenkins -- > security -- > authorix=zation 
+										a. Project Metrix based based
+										b. Role based 
+9.  multibranch pipeline
+10. node add 
+		a. Linux: add node - give name - 
+			sudo amazon-linux-extras install java-openjdk11
+			curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+			key-gen
+			private key on master server
+			public key copy to authorized_keys file on slave node
+			
+		b. Windows: 
+		
+		
+11. create pipeline
+	env, param, variable, agent, stages post and pre
+12. webhook
+13. move jenkins job from one pc to other
+14. differnet port
+15. multiple simulta upstream job success
+16. clear the history
+17. conditional build for other projects
+18. Export/import jobs in Jenkins
+19. maven and .net for build

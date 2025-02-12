@@ -13,6 +13,9 @@ pipeline {
             }
         }
         stage ("second stage"){
+            when {
+                branch 'production'
+            }   
             steps {
 
                 echo "$params.Fruit"

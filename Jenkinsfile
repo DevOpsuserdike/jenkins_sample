@@ -23,6 +23,7 @@ pipeline {
             steps {
 
                 echo "$env.Name"
+                echo "$env.Name"
             }
         }
     }

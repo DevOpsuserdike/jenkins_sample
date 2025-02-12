@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo "hellow world"
                 echo "$params.Fruit"
-                echo "$env.Fruit"
+                echo "$env.Name"
             }
         }
     }

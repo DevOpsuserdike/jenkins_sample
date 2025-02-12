@@ -7,10 +7,22 @@ pipeline {
         Name = "Siddhesh"
            }
     stages {
-        stage ("hellow World"){
+        stage ("first stage"){
             steps {
                 echo "hellow world"
+            }
+        }
+        stage ("second stage"){
+            steps {
+
                 echo "$params.Fruit"
+
+            }
+        }
+    }
+    stage ("third stage"){
+            steps {
+
                 echo "$env.Name"
             }
         }

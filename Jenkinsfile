@@ -19,12 +19,30 @@ pipeline {
 
             }
         }
-        stage ("third stage"){
+        stage('parallel stage') {
+            parallel {
+                stage('Unit Tests') {
+                    steps {
+                        sh 'sleep 5s'
+                        sh 'echo "Running unit tests"'
+                        // Add commands to run unit tests
+                    }
+                }
+                stage('Integration Tests') {
+                    steps {
+                        sh 'echo "Running integration tests"'
+                        // Add commands to run integration tests
+                    }
+                }
+            }
+        }
+        stage ("last stage"){
             steps {
 
                 echo "$env.Name"
             }
         }
+        
     }
     post { 
         always { 

@@ -44,11 +44,11 @@ pipeline {
             }
         }
         
-        stage ("build url"){
+        stage ("build url slack"){
             steps {
-                echo "successful build yrl details"
+                echo "console log details"
                 sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log.txt'
-
+                slackUploadFile(channel: "#notification", filePath: "log.txt")
             }
         }
     }

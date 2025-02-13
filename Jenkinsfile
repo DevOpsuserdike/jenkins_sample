@@ -1,6 +1,7 @@
 pipeline {
     agent { label 'linuxnode' }
     environment {
+        JenkinsURL = "http://52.32.135.51:8080"
         Name = "Siddhesh"
            }
     stages {
@@ -51,12 +52,13 @@ pipeline {
         }
         success { 
             slackSend(color: "good", message: "Success .. Please check the logs")
-            sh 'cat ${BUILD_URL}/log >> log_${BUILD_TIMESTAMP}.txt'
+//            sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${BUILD_TIMESTAMP}.txt'
+            sh 'cat ${JenkinsURL}/jobs/${JOB_NAME}/builds/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
             slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")
         }
         failure { 
             slackSend(color: "danger", message: "Failure .. Please check the logs")
-            sh 'cat ${BUILD_URL}/log >> log_${BUILD_TIMESTAMP}.txt'
+            sh 'cat ${JenkinsURL}/jobs/${JOB_NAME}/builds/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
             slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")  
         } 
     } 

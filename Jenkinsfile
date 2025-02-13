@@ -7,7 +7,7 @@ pipeline {
         stage ("chechout stage"){
             steps {
                 script{
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinswithgithub', url: 'https://github.com/DevOpsuserdike/webapp.git']])
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinswithgithub', url: 'https://github.com/DevOpsuserdike/jenkins_sample.git']])
                     echo "checkout stage is completed"
                     echo "listing all file and folders"
                     sh 'ls'

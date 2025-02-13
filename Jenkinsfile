@@ -47,9 +47,9 @@ pipeline {
         stage ("build url slack"){
             steps {
                 echo "console log details"
-                sh 'date_time="date +%Y%m%d%H%M%S"' 
-                sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${date_time}.txt'
-                slackUploadFile(channel: "#notification", filePath: "log_${date_time}.txt")
+//                sh 'DATE=$( date '+%Y-%m-%d %R:%S.%3N' )'
+                sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_$BUILD_TIMESTAMP.txt'
+                slackUploadFile(channel: "#notification", filePath: "log_$BUILD_TIMESTAMP.txt")
             }
         }
     }

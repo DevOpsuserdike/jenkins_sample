@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent linuxnode
     environment {
         Name = "Siddhesh"
            }

@@ -43,5 +43,13 @@ pipeline {
                 slackSend(color: "good", message: "Notification stage is completed")
             }
         }
+        
+        stage ("slack notification stage"){
+            steps {
+                echo "successful build yrl details"
+                slackSend(color: "good", message: "Build : ${BUILD_URL}")
+
+            }
+        }
     }
 }

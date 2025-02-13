@@ -20,7 +20,7 @@ pipeline {
                 echo "check mvn version"
                 sh 'mvn --version'
                 echo "create a local artifacts"
-#                sh 'mvn install'
+//                sh 'mvn install'
                 echo "listing the atifact created"
                 sh 'ls /var/lib/jenkins/workspace/pipeline_sample/webapp/target/*'
             }

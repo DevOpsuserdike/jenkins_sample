@@ -27,10 +27,10 @@
   <distributionManagement>
     <snapshotRepository>
         <id>snapshots</id>
-        <name>a0hxcosyovclg-artifactory-primary-0-snapshots</name>
-        <url>https://devopssiddhesh2.jfrog.io/artifactory/simple-libs-snapshot-local</url>
-    </snapshotRepository>
-</distributionManagement>
+        <name>a0pkqkpuuaypt-artifactory-primary-0-snapshots</name>
+        <url>https://trialeaxz9s.jfrog.io/artifactory/maven-libs-snapshot</url>
+    </snapshotRepository> 
+  </distributionManagement>
 
   <modules>
     <module>webapp</module>

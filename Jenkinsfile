@@ -28,6 +28,7 @@ pipeline {
         stage ("repository management stage"){
             steps {
                 echo "repository management stage is started"
+                sh 'mvn deploy'
             }
         }
     }

@@ -1,61 +1,27 @@
 pipeline {
     agent any
-    parameters{
-            choice(choices: ['Mango', 'Banana', 'Cherry'], description: 'Choose Fruit', name: 'Fruit')
-    }
     environment {
         Name = "Siddhesh"
            }
     stages {
-        stage ("first stage"){
+        stage ("chechout stage"){
             steps {
-                echo "hellow world"
-            }
-        }
-        stage ("second stage"){
-            when {
-                branch 'production'
-            }   
-            steps {
-
-                echo "$params.Fruit"
-
-            }
-        }
-        stage('parallel stage') {
-            parallel {
-                stage('Unit Tests') {
-                    steps {
-                        sh 'sleep 5s'
-                        sh 'echo "Running unit tests"'
-                        // Add commands to run unit tests
-                    }
-                }
-                stage('Integration Tests') {
-                    steps {
-                        sh 'echo "Running integration tests"'
-                        // Add commands to run integration tests
-                    }
+                script{
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinswithgithub', url: 'https://github.com/DevOpsuserdike/webapp.git']])
+                    echo "checkout stage is completed"
+                    echo "listing all file and folders"
+                    sh 'ls'
                 }
             }
         }
-        stage ("last stage"){
+        stage ("build stage"){
             steps {
-
-                echo "$env.Name"
+                echo "build stage is started"
+                echo "check mvn version"
+                sh 'mvn --version'
+                echo "create a local artifacts"
+                sh 'mvn install'
             }
-        }
-        
-    }
-    post { 
-        always { 
-            echo 'always'
-        }
-        success { 
-            echo 'success'
-        }
-        failure { 
-            echo 'failure'
         }
     }
 }

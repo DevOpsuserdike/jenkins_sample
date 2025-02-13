@@ -53,13 +53,16 @@ pipeline {
         success { 
             slackSend(color: "good", message: "Success .. Please check the logs")
 //            sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${BUILD_TIMESTAMP}.txt'
-            sh 'cat ${JenkinsURL}/jobs/${JOB_NAME}/builds/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
+//            sh 'wget ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
+            sh 'curl -u sid:sid ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
+                 http://35.93.50.63:8080/job/1/11/consoleText -o file.txt
             slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")
         }
         failure { 
             slackSend(color: "danger", message: "Failure .. Please check the logs")
-            sh 'cat ${JenkinsURL}/jobs/${JOB_NAME}/builds/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
+//            sh 'cat ${JenkinsURL}/jobs/${JOB_NAME}/builds/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
+            sh 'curl -u sid:sid ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
             slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")  
         } 
-    } 
+    }
 }

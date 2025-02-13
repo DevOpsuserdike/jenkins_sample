@@ -58,14 +58,12 @@ pipeline {
             echo 'always'
         }
         success { 
-            echo 'success'
-            echo "console log details"
+            slackSend(color: "good", message: "Success .. Please check the logs")
             sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${BUILD_TIMESTAMP}.txt'
             slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")
         }
         failure { 
-            echo 'failure'
-            echo "console log details"
+            slackSend(color: "good", message: "Failure .. Please check the logs")
             sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${BUILD_TIMESTAMP}.txt'
             slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")
         }

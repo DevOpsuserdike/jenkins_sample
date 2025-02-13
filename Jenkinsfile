@@ -47,7 +47,7 @@ pipeline {
         stage ("build url"){
             steps {
                 echo "successful build yrl details"
-                cat "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log.txt"
+                sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log.txt'
 
             }
         }

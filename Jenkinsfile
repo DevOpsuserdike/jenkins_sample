@@ -34,7 +34,7 @@ pipeline {
         stage ("repository management stage"){
             steps {
                 echo "repository management stage is started"
-                sh 'mvn deploy'
+//                sh 'mvn deploy'
             }
         }
         stage ("slack notification stage"){
@@ -46,7 +46,7 @@ pipeline {
         
         stage ("build url slack"){
             steps {
-                echo "console log details"
+                ech "console log details"
 //                sh 'DATE=$( date '+%Y-%m-%d %R:%S.%3N' )'
 //                sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${BUILD_TIMESTAMP}.txt'
 //                slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")

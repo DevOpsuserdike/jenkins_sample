@@ -25,5 +25,10 @@ pipeline {
                 sh 'ls /var/lib/jenkins/workspace/pipeline_sample/webapp/target/*'
             }
         }
+        stage ("repository management stage"){
+            steps {
+                echo "repository management stage is started"
+            }
+        }
     }
 }

@@ -55,7 +55,7 @@ pipeline {
             slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")
         }
         failure { 
-            slackSend(color: "good", message: "Failure .. Please check the logs")
+            slackSend(color: "danger", message: "Failure .. Please check the logs")
             sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${BUILD_TIMESTAMP}.txt'
             slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")
         }

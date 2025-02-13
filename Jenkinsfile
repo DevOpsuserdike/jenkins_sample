@@ -20,15 +20,27 @@ pipeline {
                 echo "check mvn version"
                 sh 'mvn --version'
                 echo "create a local artifacts"
-                sh 'mvn install'
+#                sh 'mvn install'
                 echo "listing the atifact created"
                 sh 'ls /var/lib/jenkins/workspace/pipeline_sample/webapp/target/*'
             }
         }
+        stage ("scanning stage"){
+            steps {
+                echo "scanning stage is started"
+            }
+        }
+
         stage ("repository management stage"){
             steps {
                 echo "repository management stage is started"
                 sh 'mvn deploy'
+            }
+        }
+        stage ("slack notification stage"){
+            steps {
+                echo "Notification stage is started"
+                slackSend(color: "good", message: "Notification stage is completed")
             }
         }
     }

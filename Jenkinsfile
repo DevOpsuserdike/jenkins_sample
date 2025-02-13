@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo "build stage is started"
                 echo "check mvn version"
-                sh 'mvn --version'
+//               sh 'mvn --version'
                 echo "create a local artifacts"
 //                sh 'mvn install'
                 echo "listing the atifact created"

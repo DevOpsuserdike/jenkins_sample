@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'linuxnode' }
     environment {
-        JenkinsURL = "http://52.32.135.51:8080"
+        JenkinsURL = "http://35.89.232.169:8080"
         Name = "Siddhesh"
            }
     stages {
@@ -52,6 +52,7 @@ pipeline {
         }
         success { 
             slackSend(color: "good", message: "Success .. Please check the logs")
+            build job: 'pipeline_sample_success', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOB_NAME', value: '${JOB_NAME}'), string(name: 'BUILD_ID', value: '${BUILD_ID}')]
 //            sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${BUILD_TIMESTAMP}.txt'
 //            sh 'wget ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
 //            sh 'curl -u sid:sid ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
@@ -59,6 +60,7 @@ pipeline {
         }
         failure { 
             slackSend(color: "danger", message: "Failure .. Please check the logs")
+            build job: 'pipeline_sample_success', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOB_NAME', value: '${JOB_NAME}'), string(name: 'BUILD_ID', value: '${BUILD_ID}')]
 //            sh 'cat ${JenkinsURL}/jobs/${JOB_NAME}/builds/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
 //            sh 'curl -u sid:sid ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
 //            slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")  

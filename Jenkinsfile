@@ -52,15 +52,15 @@ pipeline {
         }
         success { 
 //            slackSend(color: "good", message: "Success .. Please check the logs")
-            build job: 'pipeline_sample_succ', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOBNAME', value: '${JOB_NAME}'), string(name: 'BUILDID', value: '${BUILD_ID}')]
+//           build job: 'pipeline_sample_succ', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOBNAME', value: '${JOB_NAME}'), string(name: 'BUILDID', value: '${BUILD_ID}')]
 //            sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${BUILD_TIMESTAMP}.txt'
 //            sh 'wget ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
 //            sh 'curl -u sid:sid ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
 //            slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")
         }
         failure { 
-            slackSend(color: "danger", message: "Failure .. Please check the logs")
-            build job: 'pipeline_sample_succ', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOBNAME', value: '${JOB_NAME}'), string(name: 'BUILDID', value: '${BUILD_ID}')]
+//            slackSend(color: "danger", message: "Failure .. Please check the logs")
+//            build job: 'pipeline_sample_fail', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOBNAME', value: '${JOB_NAME}'), string(name: 'BUILDID', value: '${BUILD_ID}')]
 //            sh 'cat ${JenkinsURL}/jobs/${JOB_NAME}/builds/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
 //            sh 'curl -u sid:sid ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'
 //            slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")  

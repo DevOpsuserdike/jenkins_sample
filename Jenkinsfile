@@ -1,5 +1,6 @@
 pipeline {
-    agent { label 'linuxnode' }
+//    agent { label 'linuxnode' }
+    agent any
     environment {
         JenkinsURL = "http://35.89.232.169:8080"
         Name = "Siddhesh"

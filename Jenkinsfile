@@ -64,6 +64,7 @@ pipeline {
         }
         failure { 
                 echo "done"
+                build wait: false, propagate: false, job: 'pipeline_sample_failS', parameters: [string(name: 'JenkinsURL', value: "${JenkinsURL}/job/$env.JOB__NAME/$env.build__id/consoleText")], waitForStart: true
 //            build wait: false, propagate: false, job: 'pipeline_sample_fail', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOBNAME', value: '$env.JOB__NAME'), string(name: 'BUILDID', value: '$env.build__id')], waitForStart: true
 //            build job: 'pipeline_sample_fail', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOBNAME', value: '$env.JOB__NAME'), string(name: 'BUILDID', value: '${BUILD_ID}')]
 //            sh 'cat ${JenkinsURL}/jobs/${JOB_NAME}/builds/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'

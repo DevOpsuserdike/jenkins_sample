@@ -53,7 +53,7 @@ pipeline {
             echo 'always'  
         }
         success { 
-            slackSend(color: "good", message: "$env.JOB__NAME/$env.build__id  is success")
+            slackSend(color: "good", message: "Pipeline : $env.JOB__NAME with build : $env.build__id  is success")
 //              echo "${JenkinsURL}/job/$env.JOB__NAME/$env.build__id"
             build wait: false, propagate: false, job: 'pipeline_sample_succ', parameters: [string(name: 'JenkinsURL', value: "${JenkinsURL}/job/$env.JOB__NAME/$env.build__id/consoleText")], waitForStart: true
 //            build wait: false, propagate: false, job: 'pipeline_sample_succ', parameters: [string(name: 'JenkinsURL', value: 'http://35.89.232.169:8080'), string(name: 'JOBNAME', value: 'pipeline_sample'), string(name: 'BUILDID', value: '1')], waitForStart: true
@@ -63,7 +63,7 @@ pipeline {
 //            slackUploadFile(channel: "#notification", filePath: "log_${BUILD_TIMESTAMP}.txt")
         }
         failure { 
-                slackSend(color: "danger", message: "$env.JOB__NAME/$env.build__id  is Failed")
+                slackSend(color: "danger", message: "Pipeline : $env.JOB__NAME with build : $env.build__id is Failed")
                 build wait: false, propagate: false, job: 'pipeline_sample_fail', parameters: [string(name: 'JenkinsURL', value: "${JenkinsURL}/job/$env.JOB__NAME/$env.build__id/consoleText")], waitForStart: true
 //            build wait: false, propagate: false, job: 'pipeline_sample_fail', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOBNAME', value: '$env.JOB__NAME'), string(name: 'BUILDID', value: '$env.build__id')], waitForStart: true
 //            build job: 'pipeline_sample_fail', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}'), string(name: 'JOBNAME', value: '$env.JOB__NAME'), string(name: 'BUILDID', value: '${BUILD_ID}')]

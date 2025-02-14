@@ -3,8 +3,8 @@ pipeline {
     environment {
         JenkinsURL = "http://35.89.232.169:8080"
         Name = "Siddhesh"
-        build__id = ${env.BUILD_ID}
-        JOB__NAME = ${env.JOB_NAME}
+        build__id = "${env.BUILD_ID}"
+        JOB__NAME = "${env.JOB_NAME}"
            }
     stages {
         stage ("chechout stage"){

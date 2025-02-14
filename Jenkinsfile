@@ -48,7 +48,7 @@ pipeline {
     }
     post { 
         always { 
-            echo 'always'
+            echo 'always' 
         }
         success { 
 //            slackSend(color: "good", message: "Success .. Please check the logs")

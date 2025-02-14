@@ -54,8 +54,8 @@ pipeline {
         }
         success { 
 //            slackSend(color: "good", message: "${JenkinsURL}/job/$env.JOB__NAME/$env.build__id")
-              echo "${JenkinsURL}/job/$env.JOB__NAME/$env.build__id"
-//            build wait: false, propagate: false, job: 'pipeline_sample_succ', parameters: [string(name: 'JenkinsURL', value: '${JenkinsURL}/job/$env.JOB__NAME/$env.build__id')], waitForStart: true
+//              echo "${JenkinsURL}/job/$env.JOB__NAME/$env.build__id"
+            build wait: false, propagate: false, job: 'pipeline_sample_succ', parameters: [string(name: 'JenkinsURL', value: "${JenkinsURL}/job/$env.JOB__NAME/$env.build__id")], waitForStart: true
 //            build wait: false, propagate: false, job: 'pipeline_sample_succ', parameters: [string(name: 'JenkinsURL', value: 'http://35.89.232.169:8080'), string(name: 'JOBNAME', value: 'pipeline_sample'), string(name: 'BUILDID', value: '1')], waitForStart: true
 //            sh 'cat ${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log >> log_${BUILD_TIMESTAMP}.txt'
 //            sh 'wget ${JenkinsURL}/job/${JOB_NAME}/${BUILD_ID}/consoleText >> log_${BUILD_TIMESTAMP}.txt'

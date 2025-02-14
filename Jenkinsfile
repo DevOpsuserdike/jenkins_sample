@@ -42,8 +42,8 @@ pipeline {
         }
         stage ("slack notification stage"){
             steps {
-                ech "Notification stage is started"
-                slackSend(color: "good", message: "Notification stage is completed")
+                echo "Notification stage is started"
+//                slackSend(color: "good", message: "Notification stage is completed")
             }
         }
     

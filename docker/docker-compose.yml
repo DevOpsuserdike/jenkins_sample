@@ -16,5 +16,28 @@ services:
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
+
+  vote:
+    build:
+      context: ./vote
+    ports:
+      - 32001:80
+    depends_on:
+      - redis
+
+  result:
+    build:
+      context: ./result
+    ports:
+      -  32002:4000
+    depends_on:
+      - db
   
-  
+  worker:
+    build:
+      context: ./result
+    ports:
+      -  32002:4000
+    depends_on:
+      - db
+      - redis

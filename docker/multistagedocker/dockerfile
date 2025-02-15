@@ -1,7 +1,7 @@
 FROM centos
-RUN sudo yum install -y httpd
-RUN sudo systemctl start httpd
-RUN sudo systemctl status httpd
+RUN yum install -y httpd
+RUN systemctl start httpd
+RUN systemctl status httpd
 WORKDIR /tmp
 COPY ./../../ .
 EXPOSE 80

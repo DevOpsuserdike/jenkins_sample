@@ -21,7 +21,7 @@ services:
     build:
       context: ./vote
     ports:
-      - 32003:80
+      - "32003:80"
     depends_on:
       - redis
 
@@ -29,13 +29,13 @@ services:
     build:
       context: ./result
     ports:
-      -  32002:4000
+      -  "32002:4000"
     depends_on:
       - db
   
   worker:
     build:
-      context: ./result
+      context: ./worker
     depends_on:
       - db
       - redis

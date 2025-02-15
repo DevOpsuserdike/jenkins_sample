@@ -1,4 +1,5 @@
 FROM maven:3.5-jdk-8-alpine as builder
-COPY ./* /usr/src/
+WORKDIR /usr/src/
+COPY . .
 RUN ls /usr/src/*
-#RUN mvn install -f /usr/src/pom.xml
+RUN mvn install

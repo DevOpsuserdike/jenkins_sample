@@ -1,4 +1,8 @@
-FROM maven:3.6.0-jdk-11-slim AS build  
-COPY src /usr/src/app/src  
-COPY pom.xml /usr/src/app 
-RUN mvn -f /usr/src/app/pom.xml clean package
+FROM maven AS build
+ARG Name= "Siddhesh Dike"
+WORKDIR /tmp
+COPY pom.xml /tmp/pom.xml
+COPY webapp /tmp/webapp
+RUN mvn install
+RUN echo ${Name}
+RUN sleep 60

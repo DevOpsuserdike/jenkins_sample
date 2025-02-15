@@ -1,4 +1,4 @@
-# docker file for http server
-FROM httpd:2.4
-COPY ./index.html /usr/local/apache2/htdocs/
-EXPOSE 80
+FROM postgres
+EXPOSE 5432
+RUN echo "sid"
+ENV POSTGRES_PASSWORD=123456

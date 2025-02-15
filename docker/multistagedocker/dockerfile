@@ -1,5 +1,6 @@
 FROM maven:3.5-jdk-8-alpine as builder
 WORKDIR /usr/src/
-COPY * .
+COPY pom.xml .
+COPY webapp .
 RUN ls /usr/src/*
 RUN mvn install

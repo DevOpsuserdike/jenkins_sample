@@ -1,10 +1,5 @@
 FROM amazonlinux
 #RUN yum clean all
 RUN yum update -y
-RUN yum install -y httpd
-RUN systemctl start httpd
-RUN systemctl status httpd
 WORKDIR /tmp
 COPY ./../../ .
-EXPOSE 80
-CMD ["httpd-foreground"]

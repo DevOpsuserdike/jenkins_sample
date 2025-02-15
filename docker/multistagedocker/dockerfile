@@ -1,12 +1,4 @@
 FROM maven:3.5-jdk-8-alpine as builder
-COPY ./../../webapp/src /usr/src/
-COPY ./../../webapp/pom.xml /usr/src/pom.xml
+COPY ./* /usr/src/
 RUN mvn -f /usr/src/pom.xml clean install
 #RUN ls /usr/src/target/*
-
-FROM httpd
-ENV Name "siddhesh Dike"
-WORKDIR /var/www/html
-RUN echo ${Name} > index.html
-EXPOSE 80
-CMD ["httpd-foreground"]

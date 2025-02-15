@@ -4,5 +4,3 @@ WORKDIR /tmp
 COPY pom.xml /tmp/pom.xml
 COPY webapp /tmp/webapp
 RUN mvn install
-RUN echo ${Name}
-RUN sleep 60

@@ -1,7 +1,7 @@
 FROM maven:3.5-jdk-8-alpine as builder
 COPY ./../../webapp/src /usr/src/
 COPY ./../../webapp/pom.xml /usr/src/pom.xml
-RUN mvn -f /usr/src/app/pom.xml clean install
+RUN mvn -f /usr/src/pom.xml clean install
 #RUN ls /usr/src/target/*
 
 FROM httpd
